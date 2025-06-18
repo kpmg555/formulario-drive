@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario con Tabla</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Formulario de Registro</h2>
+  <form id="formulario">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="email" id="correo" placeholder="Correo" required>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <h2>Datos Registrados</h2>
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Filas añadidas dinámicamente -->
+    </tbody>
+  </table>
+
+<script>
+  const formulario = document.getElementById('formulario');
+  const tabla = document.getElementById('tabla').querySelector('tbody');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwNJ8_W5MvKssZTx85mbFcOeAjlZZPdSXN8m1MCMR4kcIjwU95CGj-dlJ43Y4l9VOb9dA/exec'; // ← Usa tu URL aquí
+
+  formulario.addEventListener('submit', function(evento) {
+    evento.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+
+    if (nombre && correo) {
+      // Agrega a la tabla
+      const fila = document.createElement('tr');
+      fila.innerHTML = `<td>${nombre}</td><td>${correo}</td>`;
+      tabla.appendChild(fila);
+
+      // Enviar a Google Sheets
+      const formData = new FormData();
+      formData.append('nombre', nombre);
+      formData.append('correo', correo);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => console.log('Enviado a Google Sheets'))
+        .catch(error => console.error('Error:', error));
+
+      formulario.reset();
+    }
+  });
+</script>
+
+</body>
+</html>
