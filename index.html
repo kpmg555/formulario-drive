@@ -11,9 +11,11 @@
     form {
       margin-bottom: 20px;
     }
-    input, button {
+    input, textarea, button {
       padding: 8px;
       margin: 5px;
+      width: 100%;
+      max-width: 500px;
     }
     table {
       width: 100%;
@@ -34,7 +36,11 @@
   <h2>Formulario de Registro</h2>
   <form id="formulario">
     <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="text" id="ocupacion" placeholder="Ocupación" required>
     <input type="email" id="correo" placeholder="Correo" required>
+    <input type="text" id="experiencia" placeholder="¿Has trabajado con biopolímeros en la industria médica anteriormente?" required>
+    <input type="text" id="interes" placeholder="¿Te interesaría que el hospital donde trabajas contara con esta tecnología?" required>
+    <textarea id="limitantes" placeholder="¿Cuáles consideras que serían los limitantes para la compra del producto?" required></textarea>
     <button type="submit">Agregar</button>
   </form>
 
@@ -43,7 +49,11 @@
     <thead>
       <tr>
         <th>Nombre</th>
+        <th>Ocupación</th>
         <th>Correo</th>
+        <th>Experiencia</th>
+        <th>Interés</th>
+        <th>Limitantes</th>
       </tr>
     </thead>
     <tbody>
@@ -54,24 +64,32 @@
 <script>
   const formulario = document.getElementById('formulario');
   const tabla = document.getElementById('tabla').querySelector('tbody');
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwNJ8_W5MvKssZTx85mbFcOeAjlZZPdSXN8m1MCMR4kcIjwU95CGj-dlJ43Y4l9VOb9dA/exec'; // ← Usa tu URL aquí
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby_ptMgrDBd38ON23eQ9kkNwwOij66wflOPejhkVGZkZXpz-5L34X2ZF5vpAOUqgVAgbg/exec';
 
   formulario.addEventListener('submit', function(evento) {
     evento.preventDefault();
 
     const nombre = document.getElementById('nombre').value.trim();
+    const ocupacion = document.getElementById('ocupacion').value.trim();
     const correo = document.getElementById('correo').value.trim();
+    const experiencia = document.getElementById('experiencia').value.trim();
+    const interes = document.getElementById('interes').value.trim();
+    const limitantes = document.getElementById('limitantes').value.trim();
 
-    if (nombre && correo) {
-      // Agrega a la tabla
+    if (nombre && ocupacion && correo && experiencia && interes && limitantes) {
+      // Agrega fila a la tabla
       const fila = document.createElement('tr');
-      fila.innerHTML = `<td>${nombre}</td><td>${correo}</td>`;
+      fila.innerHTML = `<td>${nombre}</td><td>${ocupacion}</td><td>${correo}</td><td>${experiencia}</td><td>${interes}</td><td>${limitantes}</td>`;
       tabla.appendChild(fila);
 
       // Enviar a Google Sheets
       const formData = new FormData();
       formData.append('nombre', nombre);
+      formData.append('ocupacion', ocupacion);
       formData.append('correo', correo);
+      formData.append('experiencia', experiencia);
+      formData.append('interes', interes);
+      formData.append('limitantes', limitantes);
 
       fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => console.log('Enviado a Google Sheets'))
