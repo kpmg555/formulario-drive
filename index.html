@@ -1,275 +1,623 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Biopolímeros Avanzados</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
     }
 
     section {
+      width: 100%;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
+      padding: 40px 20px;
     }
 
-    #productos {
-      background: linear-gradient(180deg, #0077b6, #0096c7);
-      color: #003049;
+    .slide-1 {
+      background: linear-gradient(to bottom, #666, #999);
+      color: white;
+      flex-direction: column;
+      text-align: center;
     }
 
-    .lamina {
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      max-width: 1000px;
-      width: 100%;
+    .slide-1 h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
 
-    .productos-flex {
+    .slide-1 p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
       display: flex;
-      gap: 40px;
+      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    .producto {
-      width: 300px;
+    .buttons a {
+      padding: 12px 20px;
+      background-color: #0077b6;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
     }
 
-    #contacto {
-      background: linear-gradient(180deg, #90e0ef, #caf0f8);
-      color: #000;
+    .buttons a.secondary {
+      background-color: transparent;
+      border: 2px solid white;
     }
 
-    .formulario-container {
+    .slide-2 {
+      background: linear-gradient(to bottom, #ade8f4, #caf0f8);
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 1000px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       display: flex;
-      gap: 40px;
+      gap: 30px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .formulario-container div {
-      flex: 1;
-      min-width: 300px;
+    .info, .form {
+      flex: 1 1 300px;
     }
 
-    input, textarea {
+    .info h2 {
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      margin: 8px 0;
+      font-weight: bold;
+    }
+
+    .form input,
+    .form textarea {
       width: 100%;
       padding: 10px;
-      margin: 10px 0;
+      margin-bottom: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
 
-    button {
-      background-color: #00b050;
+    .form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
       color: white;
       border: none;
-      padding: 12px;
-      width: 100%;
       border-radius: 5px;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #019145;
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-    #mensaje {
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 10px;
       margin-top: 10px;
-      color: green;
-      font-weight: bold;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem !important;
-        line-height: 1.3;
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .slide-1 h1 { font-size: 2rem; }
+      .slide-1 p { font-size: 1rem; padding: 0 10px; }
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .buttons a {
+        width: 90%;
+        max-width: 300px;
         text-align: center;
       }
 
-      h2 {
-        font-size: 1.6rem !important;
-        text-align: center;
-      }
-
-      .lamina {
-        padding: 20px !important;
-      }
-
-      .productos-flex,
-      .formulario-container,
-      .faq-flex,
-      .colaboracion-flex,
-      .innovacion-flex {
-        flex-direction: column !important;
-        gap: 20px !important;
-      }
-
-      .producto,
-      .formulario-container div,
-      .faq-card,
-      .colaboracion-card {
-        width: 100% !important;
-        min-width: 100% !important;
-      }
-
-      iframe {
-        height: 200px !important;
-      }
-
-      svg {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .innovacion-flex > div {
-        text-align: center !important;
+      .form-container {
+        flex-direction: column;
+        padding: 20px;
       }
     }
+.slide-3 {
+  background: linear-gradient(to bottom, #0077b6, #0096c7);
+  color: black;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.productos-container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.productos-container h2 {
+  font-size: 2.5rem;
+  color: #023e8a;
+  margin-bottom: 10px;
+}
+
+.productos-container p {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.productos-flex {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.producto {
+  background: #e0f7fa;
+  padding: 20px;
+  border-radius: 15px;
+  flex: 1 1 350px;
+  max-width: 450px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.producto h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.producto p {
+  margin-bottom: 10px;
+}
+
+.producto ul {
+  padding-left: 20px;
+}
+
+.producto ul li {
+  margin-bottom: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .productos-container h2 {
+    font-size: 2rem;
+  }
+
+  .productos-container p {
+    font-size: 1rem;
+  }
+
+  .producto {
+    flex: 1 1 100%;
+  }
+}
+.slide-4 {
+  background-color: #f1f7fc;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.calidad-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.calidad-texto {
+  flex: 1 1 500px;
+}
+
+.calidad-texto h2 {
+  color: #023e8a;
+  font-size: 2.3rem;
+  margin-bottom: 30px;
+}
+
+.calidad-card {
+  background: #e0f7fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.calidad-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #023e8a;
+}
+
+.calidad-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.calidad-img {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.calidad-img img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .calidad-container {
+    flex-direction: column;
+  }
+
+  .calidad-texto h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .calidad-img {
+    order: 1;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+.slide-5 {
+  background-color: #f1f7fc;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.norma-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.norma-texto {
+  flex: 1 1 500px;
+}
+
+.norma-texto h2 {
+  color: #023e8a;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+.norma-texto p {
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.norma-card {
+  background: #e0f7fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.norma-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #023e8a;
+}
+
+.norma-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.norma-img {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.norma-img img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .norma-container {
+    flex-direction: column;
+  }
+
+  .norma-texto h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .norma-texto p {
+    text-align: center;
+  }
+
+  .norma-img {
+    order: 1;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+.slide-6 {
+  background: linear-gradient(to bottom, #0077b6, #90e0ef);
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.sostenible-container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.sostenible-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.sostenible-container p {
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sostenible-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  align-items: center;
+  justify-items: center;
+}
+
+.sostenible-card {
+  background: #e0f7fa;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 350px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.sostenible-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.sostenible-img img {
+  width: 200px;
+  max-width: 80%;
+  border-radius: 50%;
+}
+
+.bottom-card {
+  grid-column: span 2;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .sostenible-container h2 {
+    font-size: 2rem;
+  }
+
+  .bottom-card {
+    grid-column: span 1;
+  }
+
+  .sostenible-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sostenible-img img {
+    margin: 20px 0;
+  }
+}
+
+/* Sección general */
+.faq-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Título */
+.faq-section h1 {
+  font-size: 2.5rem;
+  color: #003366;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.faq-section p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+/* Contenedor de tarjetas */
+.faq-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Tarjetas */
+.faq-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 260px;
+  text-align: left;
+}
+
+.faq-card h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.faq-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .faq-section h1 {
+    font-size: 2rem;
+  }
+
+  .faq-section p {
+    font-size: 1rem;
+  }
+
+  .faq-card {
+    width: 90%;
+  }
+}
+
+/* Fondo azul global para la sección */
+.slide-6 {
+  background-color: #0077b6;
+  padding: 80px 20px;
+  color: black;
+  text-align: center;
+}
+
+/* Recuadro claro */
+.colaboracion-container {
+  background-color: #caf0f8;
+  border-radius: 16px;
+  padding: 60px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Título */
+.colaboracion-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.colaboracion-container p {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+/* Contenedor de tarjetas */
+.colaboracion-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Tarjetas */
+.colaboracion-card {
+  background-color: #90e0ef;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .colaboracion-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
+
   </style>
 </head>
 <body>
-<!-- El resto del contenido sigue igual -->
 
-
-
-
- <!-- Sección Portada -->
-<section id="inicio" style="
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-              url('https://images.unsplash.com/photo-1581093588401-12f6a1e9c6e2') center/cover no-repeat;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px;
-  box-sizing: border-box;
-  flex-direction: column;
-">
-  <h1 style="font-size: 3rem; margin-bottom: 20px;">
-    Biopolímeros Avanzados para un Futuro Más Verde
-  </h1>
-  <p style="font-size: 1.3rem; max-width: 700px; margin-bottom: 30px;">
-    Innovación biotecnológica para soluciones médicas sostenibles y de alto rendimiento.
-  </p>
-  <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-    <a href="#productos" style="
-      background-color: #0077b6;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    ">Explora Nuestros Productos</a>
-    <a href="#contacto" style="
-      border: 2px solid white;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    ">Contáctanos</a>
+<!-- Sección 1 -->
+<section class="slide-1">
+  <h1>Biopolímeros Avanzados para un Futuro Más Verde</h1>
+  <p>Innovación biotecnológica para soluciones médicas sostenibles y de alto rendimiento.</p>
+  <div class="buttons">
+    <a href="#productos">Explora Nuestros Productos</a>
+    <a href="#formulario" class="secondary">Contáctanos</a>
   </div>
 </section>
-<!-- Sección Productos estilo lámina Gamma -->
-<<!-- Sección Productos con diseño mejorado -->
-<section id="productos" style="
-  min-height: 100vh;
-  background: linear-gradient(180deg, #0077b6, #0096c7);
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  box-sizing: border-box;
-">
-  <div style="
-    background-color: #ffffff;
-    color: #000;
-    border-radius: 20px;
-    padding: 50px 60px;
-    max-width: 1100px;
-    width: 100%;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    box-sizing: border-box;
-  ">
 
-    <h2 style="
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #023e8a;
-    ">Nuestros Productos</h2>
+<!-- Sección 3 -->
+<section class="slide-3" id="productos">
+  <div class="productos-container">
+    <h2>Nuestros Productos</h2>
+    <p>Soluciones médicas innovadoras diseñadas para la sostenibilidad y la eficacia clínica.</p>
 
-    <p style="text-align: center; max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
-      Soluciones médicas innovadoras diseñadas para la sostenibilidad y la eficacia clínica.
-    </p>
-
-    <div style="
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 30px;
-    ">
-      <!-- Producto 1 -->
-      <div style="
-        flex: 1;
-        min-width: 300px;
-        background-color: #e0f7fa;
-        padding: 25px 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-      " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <h3 style="font-size: 1.3rem; color: #0077b6; display: flex; align-items: center; gap: 10px;">
-          🧵 Suturas Quirúrgicas Biodegradables
-        </h3>
-        <p style="margin-top: 10px;">
+    <div class="productos-flex">
+      <div class="producto">
+        <h3>🧵 <span>Suturas Quirúrgicas Biodegradables</span></h3>
+        <p>
           Ofrecen resistencia excepcional y absorción predecible, minimizando la inflamación y optimizando la curación.
         </p>
-        <ul style="margin-top: 10px; padding-left: 20px;">
+        <ul>
           <li>Reducen residuos médicos</li>
           <li>Compatibles con el cuerpo</li>
           <li>Resultados clínicos superiores</li>
         </ul>
       </div>
-
-      <!-- Producto 2 -->
-      <div style="
-        flex: 1;
-        min-width: 300px;
-        background-color: #e0f7fa;
-        padding: 25px 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-      " onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-        <h3 style="font-size: 1.3rem; color: #0077b6; display: flex; align-items: center; gap: 10px;">
-          🧬 Andamios Tisulares
-        </h3>
-        <p style="margin-top: 10px;">
+      <div class="producto">
+        <h3>🧬 <span>Andamios Tisulares</span></h3>
+        <p>
           Proveen soporte ideal para crecimiento celular en medicina regenerativa y se biodegradan de forma segura.
         </p>
-        <ul style="margin-top: 10px; padding-left: 20px;">
+        <ul>
           <li>Promueven la regeneración natural</li>
           <li>Materiales 100% biodegradables</li>
           <li>Aplicaciones versátiles</li>
@@ -278,155 +626,59 @@
     </div>
   </div>
 </section>
+<!-- Sección 4 -->
+<section class="slide-4" id="calidad">
+  <div class="calidad-container">
+    <div class="calidad-texto">
+      <h2>Compromiso con la <br>Calidad y Seguridad Clínica</h2>
 
-   
-<!-- Sección Calidad y Seguridad Clínica Mejorada -->
-<section id="calidad" style="
-  min-height: 100vh;
-  background-color: #f1f5f9;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  box-sizing: border-box;
-">
-  <div style="
-    display: flex;
-    gap: 60px;
-    max-width: 1200px;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  ">
+      <div class="calidad-card">
+        <h3>🧪 <strong>Validación Científica Rigurosa</strong></h3>
+        <p>Cada producto es sometido a extensas pruebas de laboratorio y ensayos clínicos para asegurar su eficacia y seguridad, avalados por datos robustos.</p>
+      </div>
 
-    <!-- Columna de texto -->
-    <div style="flex: 1; min-width: 300px;">
-      <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #023e8a;">
-        Compromiso con la <br>Calidad y Seguridad Clínica
-      </h2>
+      <div class="calidad-card">
+        <h3>🧬 <strong>Biocompatibilidad y Tolerancia</strong></h3>
+        <p>Nuestros biopolímeros son inherentemente biocompatibles, reduciendo el riesgo de reacciones adversas y mejorando la aceptación del paciente.</p>
+      </div>
 
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Tarjeta 1 -->
-        <div style="background-color: #e0f7fa; border-radius: 12px; padding: 20px 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <h3 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            🧪 Validación Científica Rigurosa
-          </h3>
-          <p style="margin: 0;">
-            Cada producto es sometido a extensas pruebas de laboratorio y ensayos clínicos para asegurar su eficacia y seguridad, avalados por datos robustos.
-          </p>
-        </div>
-
-        <!-- Tarjeta 2 -->
-        <div style="background-color: #e0f7fa; border-radius: 12px; padding: 20px 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <h3 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            🧬 Biocompatibilidad y Tolerancia
-          </h3>
-          <p style="margin: 0;">
-            Nuestros biopolímeros son inherentemente biocompatibles, reduciendo el riesgo de reacciones adversas y mejorando la aceptación del paciente.
-          </p>
-        </div>
-
-        <!-- Tarjeta 3 -->
-        <div style="background-color: #e0f7fa; border-radius: 12px; padding: 20px 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-          <h3 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            ✅ Certificaciones de Calidad
-          </h3>
-          <p style="margin: 0;">
-            Cumplimos con las normativas más estrictas para garantizar la pureza y el rendimiento de nuestros productos desde la fabricación hasta su uso final.
-          </p>
-        </div>
+      <div class="calidad-card">
+        <h3>✅ <strong>Certificaciones de Calidad</strong></h3>
+        <p>Cumplimos con las normativas más estrictas para garantizar la pureza y el rendimiento de nuestros productos desde la fabricación hasta su uso final.</p>
       </div>
     </div>
 
-    <!-- Columna de imagen -->
-    <div style="flex: 1; min-width: 300px; text-align: center;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Researchers_in_laboratory.jpg"
-        alt="Investigadores en laboratorio"
-        style="width: 100%; max-width: 460px; border-radius: 18px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);">
+    <div class="calidad-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Researchers_in_laboratory.jpg" alt="Laboratorio">
     </div>
   </div>
 </section>
 
+<!-- Sección 5 -->
+<section class="slide-5" id="normativa">
+  <div class="norma-container">
+    <div class="norma-texto">
+      <h2>Cumplimiento Normativo:<br>COFEPRIS y Estándares Globales</h2>
+      <p>Nuestra dedicación a la seguridad y la eficacia se refleja en el estricto apego a las regulaciones nacionales e internacionales que rigen los productos médicos innovadores.</p>
 
-<!-- Sección Cumplimiento Normativo Mejorada -->
-<section id="cumplimiento" style="
-  min-height: 100vh;
-  background-color: #f1f5f9;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  box-sizing: border-box;
-">
-  <div style="
-    display: flex;
-    gap: 60px;
-    max-width: 1200px;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  ">
-    <!-- Columna de texto -->
-    <div style="flex: 1; min-width: 300px;">
-      <h2 style="
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        color: #023e8a;
-      ">
-        Cumplimiento Normativo:<br>COFEPRIS y Estándares Globales
-      </h2>
-
-      <p style="font-size: 1.05rem; margin-bottom: 35px;">
-        Nuestra dedicación a la seguridad y la eficacia se refleja en el estricto apego a las regulaciones nacionales e internacionales que rigen los productos médicos innovadores.
-      </p>
-
-      <!-- Bloques de tarjeta -->
-      <div style="
-        background-color: #e0f7fa;
-        border-radius: 12px;
-        padding: 20px 25px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        margin-bottom: 20px;
-      ">
-        <h3 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: #0077b6;">
-          ✅ Certificación COFEPRIS
-        </h3>
-        <p style="margin: 0;">
-          Todos nuestros productos cumplen rigurosamente con las directrices de la Comisión Federal para la Protección contra Riesgos Sanitarios en México, asegurando su comercialización segura.
-        </p>
+      <div class="norma-card">
+        <h3>✅ <strong>Certificación COFEPRIS</strong></h3>
+        <p>Todos nuestros productos cumplen rigurosamente con las directrices de la Comisión Federal para la Protección contra Riesgos Sanitarios en México, asegurando su comercialización segura.</p>
       </div>
 
-      <div style="
-        background-color: #e0f7fa;
-        border-radius: 12px;
-        padding: 20px 25px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      ">
-        <h3 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: #0077b6;">
-          📦 Trazabilidad Completa
-        </h3>
-        <p style="margin: 0;">
-          Implementamos sistemas de trazabilidad que garantizan la procedencia y calidad de cada componente utilizado en nuestros bioproductos.
-        </p>
+      <div class="norma-card">
+        <h3>📦 <strong>Trazabilidad Completa</strong></h3>
+        <p>Implementamos sistemas de trazabilidad que garantizan la procedencia y calidad de cada componente utilizado en nuestros bioproductos.</p>
       </div>
     </div>
 
-    <!-- Columna de imagen -->
-    <div style="flex: 1; min-width: 300px; text-align: center;">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/1/12/MUIC_chem_lab.jpg"
-        alt="Laboratorio certificado"
-        style="width: 100%; max-width: 460px; border-radius: 18px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);"
-      >
+    <div class="norma-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/CICB%27s_Laboratory.jpg" alt="Laboratorio COFEPRIS">
     </div>
   </div>
 </section>
 
-<!-- Sección Innovación Sostenible Estética Mejorada -->
+<!-- Sección 6: Innovación Sostenible -->
 <section id="innovacion" style="
   min-height: 100vh;
   background: linear-gradient(180deg, #0077b6, #90e0ef);
@@ -498,250 +750,98 @@
   </div>
 </section>
 
-<!-- Sección Preguntas Frecuentes Estética Mejorada -->
-<section id="faq" style="
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  box-sizing: border-box;
-">
-  <div style="max-width: 1200px; width: 100%;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 10px; color: #023e8a;">
-      Preguntas Frecuentes sobre Biopolímeros
-    </h2>
-    <p style="text-align: center; margin-bottom: 50px; font-size: 1.1rem;">
-      Encuentre respuestas a las preguntas más comunes sobre nuestros productos y tecnología.
-    </p>
+<!-- Sección 7: Preguntas Frecuentes sobre Biopolímeros -->
+<section class="faq-section">
+    <h1>Preguntas Frecuentes sobre Biopolímeros</h1>
+    <p>Encuentre respuestas a las preguntas más comunes sobre nuestros productos y tecnología.</p>
 
-    <div style="
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    ">
-
-      <!-- Tarjeta 1 -->
-      <div style="
-        flex: 1;
-        min-width: 260px;
-        max-width: 280px;
-        background-color: #ffffff;
-        padding: 25px 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      ">
-        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">
-          ❓ ¿Qué son los biopolímeros biodegradables?
-        </h3>
-        <p style="font-size: 0.96rem;">
-          Son polímeros derivados de fuentes renovables que se descomponen naturalmente en el medio ambiente a través de procesos biológicos.
-        </p>
+    <div class="faq-flex">
+      <div class="faq-card">
+        <h3>❓ ¿Qué son los biopolímeros biodegradables?</h3>
+        <p>Son polímeros derivados de fuentes renovables que se descomponen naturalmente en el medio ambiente a través de procesos biológicos.</p>
       </div>
-
-      <!-- Tarjeta 2 -->
-      <div style="
-        flex: 1;
-        min-width: 260px;
-        max-width: 280px;
-        background-color: #ffffff;
-        padding: 25px 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      ">
-        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">
-          ⏳ ¿Cuál es la vida útil de sus productos?
-        </h3>
-        <p style="font-size: 0.96rem;">
-          La vida útil varía según el producto y su aplicación, pero todos están diseñados para mantener su integridad hasta su absorción controlada.
-        </p>
+      <div class="faq-card">
+        <h3>⏳ ¿Cuál es la vida útil de sus productos?</h3>
+        <p>La vida útil variará según el producto y su aplicación, pero todos están diseñados para mantener su integridad hasta su absorción controlada.</p>
       </div>
-
-      <!-- Tarjeta 3 -->
-      <div style="
-        flex: 1;
-        min-width: 260px;
-        max-width: 280px;
-        background-color: #ffffff;
-        padding: 25px 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      ">
-        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">
-          👨‍⚕️ ¿Son seguros para todos los pacientes?
-        </h3>
-        <p style="font-size: 0.96rem;">
-          Nuestros productos son diseñados para ser biocompatibles. Consulte a un profesional de la salud para determinar la idoneidad para cada caso específico.
-        </p>
+      <div class="faq-card">
+        <h3>🧑‍⚕️ ¿Son seguros para todos los pacientes?</h3>
+        <p>Nuestros productos son diseñados para ser biocompatibles. Consulte a un profesional de la salud para determinar la idoneidad para cada caso específico.</p>
       </div>
-
-      <!-- Tarjeta 4 -->
-      <div style="
-        flex: 1;
-        min-width: 260px;
-        max-width: 280px;
-        background-color: #ffffff;
-        padding: 25px 20px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      ">
-        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">
-          ♻️ ¿Cómo se diferencian de los materiales tradicionales?
-        </h3>
-        <p style="font-size: 0.96rem;">
-          Ofrecen ventajas en sostenibilidad, biocompatibilidad y reducción de la necesidad de procedimientos de extracción adicionales.
-        </p>
+      <div class="faq-card">
+        <h3>♻️ ¿Cómo se diferencian de los materiales tradicionales?</h3>
+        <p>Ofrecen ventajas en sostenibilidad, biocompatibilidad y reducción de la necesidad de procedimientos de extracción adicionales.</p>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Sección Oportunidades de Colaboración -->
-<section id="colaboracion" style="
-  height: 100vh;
-  background-color: #0077b6;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  box-sizing: border-box;
-">
-  <div style="
-    background-color: #caf0f8;
-    border-radius: 15px;
-    padding: 40px 50px;
-    max-width: 1000px;
-    width: 100%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-  ">
-    <h2 style="text-align: center; font-size: 2.3rem; margin-bottom: 20px;">Oportunidades de Colaboración</h2>
-    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 40px;">
-      Invitamos a distribuidores médicos e inversionistas a unirse a nuestra misión de transformar la salud y el medio ambiente.
-    </p>
 
-    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-      <!-- Distribuidores Médicos -->
-      <div style="flex: 1; min-width: 280px;">
-        <div style="
-          background-color: #ade8f4;
-          padding: 20px;
-          border-radius: 10px;
-          text-align: center;
-        ">
-          <div style="font-size: 30px; margin-bottom: 10px;">🏥</div>
-          <h3 style="margin-bottom: 10px;">Distribuidores Médicos</h3>
-          <p>Amplíe su catálogo con productos innovadores que satisfacen la creciente demanda de soluciones sostenibles y de alta calidad en el sector salud.</p>
-        </div>
+
+  <section class="slide-6" id="colaboracion">
+  <div class="colaboracion-container">
+    <h2>Oportunidades de Colaboración</h2>
+    <p>Invitamos a distribuidores médicos e inversionistas a unirse a nuestra misión de transformar la salud y el medio ambiente.</p>
+
+    <div class="colaboracion-cards">
+      <div class="colaboracion-card">
+        <h3>🏥 <strong>Distribuidores Médicos</strong></h3>
+        <p>Amplié su catálogo con productos innovadores que satisfacen la creciente demanda de soluciones sostenibles y de alta calidad en el sector salud.</p>
       </div>
 
-      <!-- Inversionistas Estratégicos -->
-      <div style="flex: 1; min-width: 280px;">
-        <div style="
-          background-color: #ade8f4;
-          padding: 20px;
-          border-radius: 10px;
-          text-align: center;
-        ">
-          <div style="font-size: 30px; margin-bottom: 10px;">📈</div>
-          <h3 style="margin-bottom: 10px;">Inversionistas Estratégicos</h3>
-          <p>Invierta en una empresa con un futuro prometedor, líder en biotecnología y con un impacto positivo en la salud y el medio ambiente.</p>
-        </div>
+      <div class="colaboracion-card">
+        <h3>📈 <strong>Inversionistas Estratégicos</strong></h3>
+        <p>Invierta en una empresa con un futuro prometedor, líder en biotecnología y con un impacto positivo en la salud y el medio ambiente.</p>
       </div>
     </div>
   </div>
 </section>
 
 
-<<!-- Sección Formulario -->
-<section id="contacto">
-  <div class="lamina" style="
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  ">
-
-    <!-- Información de contacto + mapa -->
-    <div style="flex: 1; min-width: 300px;">
-      <h2 style="text-align: center;">Contáctenos y Únase a la Revolución Biopolimérica</h2>
-      <p><strong>Correo Electrónico:</strong> info@biopolymersolutions.es</p>
-      <p><strong>Teléfono:</strong> +34 912 345 678</p>
-      <p><strong>Dirección:</strong> Río Hondo 1, Ciudad de México, México</p>
-
-      <!-- Mapa dentro del cuadro punteado -->
-      <div style="margin-top: 20px; border: 2px dashed #999; border-radius: 8px; overflow: hidden;">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.539899668793!2d-99.20242022320907!3d19.3457615819152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d200056b8d0c97%3A0xa11fd3358414b339!2sR%C3%ADo%20Hondo%201%2C%20Altavista%2C%20%C3%81lvaro%20Obreg%C3%B3n%2C%2001080%20Col.%20Progreso%20Tizap%C3%A1n%2C%20CDMX!5e0!3m2!1ses!2smx!4v1750301450523!5m2!1ses!2smx"
-          width="100%"
-          height="250"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+<!-- Sección 2 -->
+<section class="slide-2" id="formulario">
+  <div class="form-container">
+    <div class="info">
+      <h2>Contáctenos y Únase a la Revolución Biopolimérica</h2>
+      <p>Correo Electrónico: info@biopolymersolutions.es</p>
+      <p>Teléfono: +34 912 345 678</p>
+      <p>Dirección: Río Hondo 1, Ciudad de México, México</p>
+      <iframe src="https://www.google.com/maps?q=Río%20Hondo%201,%20CDMX&output=embed"></iframe>
     </div>
 
-    <!-- Formulario -->
-    <div style="flex: 1; min-width: 300px;">
-      <form id="formulario">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="ocupacion" placeholder="Ocupación">
-        <input type="email" name="correo" placeholder="Correo Electrónico" required>
-        <input type="text" name="experiencia" placeholder="¿Has trabajado con biopolímeros en la industria médica anteriormente?">
-        <input type="text" name="interes" placeholder="¿Te interesaría que el hospital donde trabajas contara con esta tecnología?">
-        <textarea name="limitantes" rows="4" placeholder="¿Cuáles consideras que serían los limitantes para la compra del producto?"></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-      <p id="mensaje"></p>
-    </div>
-
+    <form class="form" id="formularioContacto" name="contact-form">
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="text" name="ocupacion" placeholder="Ocupación">
+      <input type="email" name="email" placeholder="Correo Electrónico" required>
+      <input type="text" name="experiencia" placeholder="¿Ha trabajado con biopolímeros en la industria médica anteriormente?">
+      <input type="text" name="hospital" placeholder="¿Le interesaría que su hospital contara con esta tecnología?">
+      <textarea name="limitantes" rows="4" placeholder="¿Cuáles considera que serían los limitantes para la compra del producto?"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </section>
 
-
-
-<!-- Script para envío sin salir de la página -->
+<!-- Script para enviar a Google Apps Script -->
 <script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwMd-ZSVPUpZiOSFg7xaSbVFlhianNk_chcnDZgwwJib9Mxe5WQ1-hqXyenmjDferLzGw/exec';
-  const form = document.getElementById('formulario');
-  const mensaje = document.getElementById('mensaje');
+  const form = document.getElementById('formularioContacto');
 
   form.addEventListener('submit', e => {
-    e.preventDefault(); // Evita que se recargue la página
-    const formData = new FormData(form);
-
-    fetch(scriptURL, { method: 'POST', body: formData })
-      .then(response => {
-        mensaje.innerText = 'Formulario enviado con éxito.';
-        form.reset(); // Limpia los campos
-      })
-      .catch(error => {
-        mensaje.innerText = 'Error al enviar el formulario.';
-        console.error('Error:', error);
-      });
+    e.preventDefault();
+    fetch(scriptURL, {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(response => {
+      alert('¡Formulario enviado con éxito!');
+      form.reset();
+    })
+    .catch(error => {
+      alert('Error al enviar el formulario.');
+      console.error('Error!', error.message);
+    });
   });
 </script>
-
-<script>
-  fetch("https://script.google.com/macros/s/AKfycbwMd-ZSVPUpZiOSFg7xaSbVFlhianNk_chcnDZgwwJib9Mxe5WQ1-hqXyenmjDferLzGw/exec")
-    .then(() => console.log("Visita registrada"))
-    .catch(err => console.error("Error al registrar visita", err));
-</script>
-
 
 </body>
 </html>
