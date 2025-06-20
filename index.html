@@ -11,7 +11,7 @@
     }
 
     section {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,7 +19,6 @@
       box-sizing: border-box;
     }
 
-    /* Sección Productos */
     #productos {
       background: linear-gradient(180deg, #0077b6, #0096c7);
       color: #003049;
@@ -45,7 +44,6 @@
       width: 300px;
     }
 
-    /* Sección Contacto */
     #contacto {
       background: linear-gradient(180deg, #90e0ef, #caf0f8);
       color: #000;
@@ -94,57 +92,58 @@
       color: green;
       font-weight: bold;
     }
+
     @media (max-width: 600px) {
-  h1 {
-    font-size: 2rem !important;
-    line-height: 1.3;
-    text-align: center;
-  }
+      h1 {
+        font-size: 2rem !important;
+        line-height: 1.3;
+        text-align: center;
+      }
 
-  h2 {
-    font-size: 1.6rem !important;
-    text-align: center;
-  }
+      h2 {
+        font-size: 1.6rem !important;
+        text-align: center;
+      }
 
-  .lamina {
-    padding: 20px !important;
-  }
+      .lamina {
+        padding: 20px !important;
+      }
 
-  .productos-flex,
-  .formulario-container,
-  .faq-flex,
-  .colaboracion-flex,
-  .innovacion-flex {
-    flex-direction: column !important;
-    gap: 20px !important;
-  }
+      .productos-flex,
+      .formulario-container,
+      .faq-flex,
+      .colaboracion-flex,
+      .innovacion-flex {
+        flex-direction: column !important;
+        gap: 20px !important;
+      }
 
-  .producto,
-  .formulario-container div,
-  .faq-card,
-  .colaboracion-card {
-    width: 100% !important;
-    min-width: 100% !important;
-  }
+      .producto,
+      .formulario-container div,
+      .faq-card,
+      .colaboracion-card {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
 
-  iframe {
-    height: 200px !important;
-  }
+      iframe {
+        height: 200px !important;
+      }
 
-  svg {
-    max-width: 100%;
-    height: auto;
-  }
+      svg {
+        max-width: 100%;
+        height: auto;
+      }
 
-  .innovacion-flex > div {
-    text-align: center !important;
-  }
-}
-
+      .innovacion-flex > div {
+        text-align: center !important;
+      }
+    }
   </style>
-  
 </head>
 <body>
+<!-- El resto del contenido sigue igual -->
+
 
 
 
